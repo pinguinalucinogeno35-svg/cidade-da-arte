@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Peça · Cidade da Arte</title>
+  <meta name="description" content="Escolha tamanho e acabamento e envie para orçamento pelo WhatsApp da Cidade da Arte.">
+  <meta property="og:title" content="Cidade da Arte">
+  <!--@head-->
+</head>
+<body data-pagina="produto">
+<!--@icones-->
+<!--@header-->
+
+<main id="conteudo" class="container">
+  <div data-produto>
+    <nav class="migalhas cabecalho-pagina" style="padding-bottom:0" aria-label="Você está em">
+      <ol>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="catalogo.html" data-migalha-categoria>Catálogo</a></li>
+        <li><span aria-current="page" data-migalha-nome></span></li>
+      </ol>
+    </nav>
+
+    <div class="produto">
+      <div class="galeria">
+        <div class="galeria__principal">
+          <img data-imagem-principal src="" alt="" width="400" height="500">
+          <span class="selo-conceitual">Imagem ilustrativa</span>
+        </div>
+        <div class="galeria__miniaturas" data-miniaturas></div>
+      </div>
+
+      <div class="produto__info">
+        <p class="sobretitulo" data-colecao></p>
+        <h1 data-nome></h1>
+        <p class="produto__codigo" data-codigo></p>
+        <p class="produto__descricao" data-descricao></p>
+
+        <div class="produto__preco">
+          <strong>Valor sob consulta</strong>
+          <span>confirmado pela loja no WhatsApp</span>
+        </div>
+
+        <form class="configurador" data-configurador>
+          <fieldset>
+            <legend>Tamanho</legend>
+            <div class="chips" data-opcoes-tamanho></div>
+            <p class="dica" data-dica-sob-medida hidden>Informe as medidas da parede ou da peça no campo de observações. A equipe confirma a viabilidade.</p>
+          </fieldset>
+          <fieldset>
+            <legend>Acabamento</legend>
+            <div class="chips" data-opcoes-acabamento></div>
+          </fieldset>
+          <div>
+            <p class="rotulo-campo" id="rotulo-qtd">Quantidade</p>
+            <div class="quantidade" role="group" aria-labelledby="rotulo-qtd">
+              <button type="button" data-qtd-menos aria-label="Diminuir quantidade"><svg class="icone" aria-hidden="true"><use href="#i-menos"/></svg></button>
+              <span data-qtd-valor aria-live="polite">1</span>
+              <button type="button" data-qtd-mais aria-label="Aumentar quantidade"><svg class="icone" aria-hidden="true"><use href="#i-mais"/></svg></button>
+            </div>
+          </div>
+          <div class="campo">
+            <label for="obs">Observações <span class="texto-suave">(opcional)</span></label>
+            <textarea id="obs" name="obs" rows="2" maxlength="300" placeholder="Ex.: parede de 2,40 m, sofá cinza, quero tons mais claros"></textarea>
+          </div>
+
+          <div class="produto__acoes">
+            <button class="botao botao--escuro botao--largo" type="submit">
+              <svg class="icone" aria-hidden="true"><use href="#i-carrinho"/></svg> Adicionar ao carrinho
+            </button>
+            <div class="produto__acoes-linha">
+              <button class="botao botao--contorno" type="button" data-pedir-agora>
+                <svg class="icone" aria-hidden="true"><use href="#i-conversa"/></svg> Pedir só esta peça
+              </button>
+              <button class="botao botao--contorno" type="button" data-ver-na-parede>
+                <svg class="icone" aria-hidden="true"><use href="#i-parede"/></svg> Ver na minha parede
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <div class="acordeoes">
+          <details open>
+            <summary>Detalhes da peça <svg class="icone" aria-hidden="true"><use href="#i-mais"/></svg></summary>
+            <div>
+              <dl>
+                <dt>Ambientes</dt><dd data-ambientes></dd>
+                <dt>Disponibilidade</dt><dd>Pronta entrega ou sob medida, confirmada no atendimento</dd>
+                <dt>Materiais</dt><dd>Especificação técnica informada pela equipe junto com o orçamento</dd>
+              </dl>
+            </div>
+          </details>
+          <details>
+            <summary>Como funciona o orçamento <svg class="icone" aria-hidden="true"><use href="#i-mais"/></svg></summary>
+            <div>
+              <p>1. Escolha tamanho e acabamento e adicione ao carrinho.</p>
+              <p>2. Ao finalizar, seu pedido chega pronto no WhatsApp da loja, com código de referência.</p>
+              <p>3. A equipe responde com valor, disponibilidade, prazo e opções de entrega. Nada é cobrado pelo site.</p>
+            </div>
+          </details>
+          <details>
+            <summary>Entrega, retirada e instalação <svg class="icone" aria-hidden="true"><use href="#i-mais"/></svg></summary>
+            <div>
+              <p>Você pode retirar na loja em Ilhéus ou combinar a entrega. Prazos, frete e instalação são confirmados no atendimento.</p>
+            </div>
+          </details>
+          <details>
+            <summary>Não sabe se combina com seu ambiente? <svg class="icone" aria-hidden="true"><use href="#i-mais"/></svg></summary>
+            <div>
+              <p>Use "Ver na minha parede": envie uma foto do ambiente e a largura da parede, e a equipe ajuda a escolher tamanho e acabamento.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+
+    <section class="secao--compacta" aria-labelledby="relacionados-titulo" style="padding-top:0">
+      <div class="cabecalho-secao"><h2 class="titulo-secao" id="relacionados-titulo">Combina com</h2></div>
+      <ul class="grade-produtos" data-relacionados></ul>
+    </section>
+  </div>
+
+  <div class="estado-vazio" data-nao-encontrado hidden>
+    <svg class="icone icone--grande" aria-hidden="true"><use href="#i-moldura"/></svg>
+    <h1 class="titulo-secao">Peça não encontrada</h1>
+    <p class="texto-suave">Ela pode ter saído do catálogo. Veja as outras opções.</p>
+    <a class="botao botao--escuro" href="catalogo.html">Ver catálogo</a>
+  </div>
+</main>
+
+<!--@footer-->
+<!--@scripts-->
+<script src="assets/js/produto.js"></script>
+</body>
+</html>

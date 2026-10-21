@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Sob medida · Cidade da Arte</title>
+  <meta name="description" content="Quadros, espelhos e molduras sob medida em Ilhéus. Informe as medidas e receba o orçamento da Cidade da Arte pelo WhatsApp.">
+  <meta property="og:title" content="Sob medida · Cidade da Arte">
+  <meta property="og:image" content="assets/img/cat-sob-medida.webp">
+  <!--@head-->
+</head>
+<body data-pagina="sob-medida">
+<!--@icones-->
+<!--@header-->
+
+<main id="conteudo" class="container">
+  <div class="cabecalho-pagina">
+    <nav class="migalhas" aria-label="Você está em">
+      <ol><li><a href="index.html">Início</a></li><li><span aria-current="page">Sob medida</span></li></ol>
+    </nav>
+    <h1>Do seu jeito, na sua parede.</h1>
+    <p>Quadros, espelhos e molduras feitos na medida do seu ambiente. Conte o que você imagina e a equipe responde com orçamento e prazo.</p>
+  </div>
+
+  <div class="sob-medida">
+    <aside class="sob-medida__lateral">
+      <img src="assets/img/cat-sob-medida.webp" alt="Díptico de naturezas-mortas com limões em moldura de madeira" width="308" height="240" loading="lazy">
+      <ol class="lista-passos">
+        <li><span><strong>Meça a parede</strong>Largura e altura do espaço onde a peça vai ficar.</span></li>
+        <li><span><strong>Escolha o tipo e o acabamento</strong>Quadro, espelho ou moldura para uma peça sua.</span></li>
+        <li><span><strong>Envie pelo WhatsApp</strong>Se quiser, mande fotos do ambiente e referências.</span></li>
+        <li><span><strong>Receba o orçamento</strong>Valor, prazo de produção e opções de entrega.</span></li>
+      </ol>
+    </aside>
+
+    <section class="sob-medida__painel" aria-labelledby="form-titulo">
+      <h2 id="form-titulo">Descreva sua peça</h2>
+      <p class="texto-suave" style="margin-bottom:24px">Leva menos de um minuto.</p>
+      <form class="formulario" data-form-sob-medida novalidate>
+        <fieldset class="campo campo--opcoes">
+          <legend>O que você precisa?</legend>
+          <label class="opcao"><input type="radio" name="tipo" value="Quadro" checked><span>Quadro</span></label>
+          <label class="opcao"><input type="radio" name="tipo" value="Espelho"><span>Espelho</span></label>
+          <label class="opcao"><input type="radio" name="tipo" value="Moldura para peça própria"><span>Moldura para peça minha</span></label>
+        </fieldset>
+        <div class="campos-duplos">
+          <div class="campo">
+            <label for="sm-largura">Largura (cm)</label>
+            <input id="sm-largura" name="largura" type="number" inputmode="numeric" min="10" max="400" placeholder="Ex.: 120" required>
+            <p class="campo__erro" data-erro-para="largura" hidden>Informe uma largura entre 10 e 400 cm.</p>
+          </div>
+          <div class="campo">
+            <label for="sm-altura">Altura (cm)</label>
+            <input id="sm-altura" name="altura" type="number" inputmode="numeric" min="10" max="400" placeholder="Ex.: 80" required>
+            <p class="campo__erro" data-erro-para="altura" hidden>Informe uma altura entre 10 e 400 cm.</p>
+          </div>
+        </div>
+        <div class="campos-duplos">
+          <div class="campo">
+            <label for="sm-acabamento">Acabamento</label>
+            <select id="sm-acabamento" name="acabamento">
+              <option>A definir com a equipe</option>
+              <option>Moldura preta</option>
+              <option>Moldura madeira natural</option>
+              <option>Moldura dourada</option>
+              <option>Canvas sem moldura</option>
+              <option>Espelho bisotê sem moldura</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="sm-ambiente">Ambiente</label>
+            <select id="sm-ambiente" name="ambiente">
+              <option value="">Selecione</option>
+              <option>Sala</option>
+              <option>Quarto</option>
+              <option>Hall de entrada</option>
+              <option>Cozinha e jantar</option>
+              <option>Escritório</option>
+              <option>Área comercial</option>
+            </select>
+          </div>
+        </div>
+        <div class="campo" style="max-width:160px">
+          <label for="sm-qtd">Quantidade</label>
+          <input id="sm-qtd" name="quantidade" type="number" inputmode="numeric" min="1" max="99" value="1">
+        </div>
+        <div class="campo">
+          <label for="sm-ref">Ideia ou referência <span class="texto-suave">(opcional)</span></label>
+          <textarea id="sm-ref" name="referencia" rows="3" maxlength="400" placeholder="Tema, cores, estilo. Você poderá enviar fotos no WhatsApp."></textarea>
+        </div>
+        <p class="lgpd">Nada é salvo em nosso site: as informações seguem apenas na mensagem que você envia pelo WhatsApp.</p>
+        <div class="sob-medida__acoes">
+          <button class="botao botao--escuro" type="submit" data-acao="whatsapp"><svg class="icone" aria-hidden="true"><use href="#i-conversa"/></svg> Enviar pelo WhatsApp</button>
+          <button class="botao botao--contorno" type="submit" data-acao="carrinho"><svg class="icone" aria-hidden="true"><use href="#i-carrinho"/></svg> Adicionar ao carrinho</button>
+        </div>
+      </form>
+    </section>
+  </div>
+</main>
+
+<!--@footer-->
+<!--@scripts-->
+<script src="assets/js/sob-medida.js"></script>
+</body>
+</html>

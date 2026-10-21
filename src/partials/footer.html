@@ -1,0 +1,115 @@
+<footer class="rodape">
+  <div class="container rodape__grade">
+    <div class="rodape__marca">
+      <img src="assets/marca/logo-cidade-da-arte-claro.png" alt="cidade da arte" width="120" height="52" loading="lazy">
+      <p>Leve arte para sua vida! Loja de fábrica de quadros e espelhos, pronta entrega e sob medida.</p>
+    </div>
+    <nav aria-label="Rodapé">
+      <h2 class="rodape__titulo">Navegue</h2>
+      <ul>
+        <li><a href="catalogo.html?categoria=quadros">Quadros</a></li>
+        <li><a href="catalogo.html?categoria=espelhos">Espelhos</a></li>
+        <li><a href="catalogo.html?categoria=religiosa">Arte religiosa</a></li>
+        <li><a href="sob-medida.html">Sob medida</a></li>
+        <li><a href="sobre.html">Sobre a loja</a></li>
+        <li><a href="sobre.html#profissionais">Arquitetos e decoradores</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h2 class="rodape__titulo">Visite</h2>
+      <ul class="rodape__contato">
+        <li><svg class="icone" aria-hidden="true"><use href="#i-local"/></svg><span data-endereco>Av. Vereador Ruy Carvalho, 196<br>São Francisco · Ilhéus, BA</span></li>
+        <li><svg class="icone" aria-hidden="true"><use href="#i-conversa"/></svg><a href="#" data-whatsapp="rodape" data-telefone-texto>WhatsApp</a></li>
+        <li><svg class="icone" aria-hidden="true"><use href="#i-instagram"/></svg><a href="https://www.instagram.com/cidadedaarte.ios/" target="_blank" rel="noopener">@cidadedaarte.ios</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container rodape__base">
+    <p>© <span data-ano>2026</span> Cidade da Arte · Ilhéus, BA</p>
+    <p>Valores, disponibilidade e prazos confirmados no atendimento.</p>
+  </div>
+</footer>
+
+<button class="whats-flutuante" type="button" data-whatsapp="flutuante" aria-label="Conversar pelo WhatsApp">
+  <svg class="icone" aria-hidden="true"><use href="#i-conversa"/></svg>
+  <span>Fale conosco</span>
+</button>
+
+<div class="carrinho-fundo" data-fechar-carrinho hidden></div>
+<aside class="carrinho" id="carrinho" role="dialog" aria-modal="true" aria-labelledby="carrinho-titulo" hidden data-carrinho>
+  <div class="carrinho__topo">
+    <div>
+      <h2 id="carrinho-titulo" class="carrinho__titulo">Seu carrinho</h2>
+      <p class="carrinho__sub" data-carrinho-sub>Monte seu pedido e envie para orçamento</p>
+    </div>
+    <button class="botao-icone" type="button" data-fechar-carrinho>
+      <svg class="icone" aria-hidden="true"><use href="#i-fechar"/></svg>
+      <span class="visualmente-oculto">Fechar carrinho</span>
+    </button>
+  </div>
+
+  <!-- Etapa 1: itens -->
+  <div class="carrinho__etapa" data-etapa="itens">
+    <ul class="carrinho__lista" data-lista-carrinho></ul>
+    <div class="carrinho__vazio" data-carrinho-vazio hidden>
+      <svg class="icone icone--grande" aria-hidden="true"><use href="#i-moldura"/></svg>
+      <p>Seu carrinho está vazio.</p>
+      <p class="texto-suave">Escolha quadros e espelhos no catálogo ou fale direto com a equipe.</p>
+      <a class="botao botao--escuro" href="catalogo.html">Explorar catálogo</a>
+      <button class="botao botao--contorno" type="button" data-whatsapp="carrinho-vazio">Falar no WhatsApp</button>
+    </div>
+    <div class="carrinho__rodape" data-carrinho-acoes>
+      <p class="carrinho__nota">Sem pagamento pelo site. A loja confirma valores, disponibilidade e prazo pelo WhatsApp.</p>
+      <button class="botao botao--escuro botao--largo" type="button" data-ir-dados>
+        Continuar pedido
+        <svg class="icone" aria-hidden="true"><use href="#i-seta"/></svg>
+      </button>
+      <a class="botao botao--texto" href="catalogo.html">Continuar escolhendo</a>
+    </div>
+  </div>
+
+  <!-- Etapa 2: dados e envio -->
+  <form class="carrinho__etapa formulario" data-etapa="dados" data-form-pedido hidden novalidate>
+    <button class="botao botao--texto botao--voltar" type="button" data-voltar-itens>
+      <svg class="icone" aria-hidden="true"><use href="#i-voltar"/></svg>
+      Voltar aos itens
+    </button>
+    <p class="carrinho__resumo" data-resumo-pedido></p>
+    <div class="campo">
+      <label for="pedido-nome">Seu nome <span aria-hidden="true">*</span></label>
+      <input id="pedido-nome" name="nome" autocomplete="name" required maxlength="80">
+      <p class="campo__erro" data-erro-para="nome" hidden>Informe seu nome para a equipe te atender.</p>
+    </div>
+    <div class="campo">
+      <label for="pedido-cidade">Cidade e bairro</label>
+      <input id="pedido-cidade" name="cidade" autocomplete="address-level2" maxlength="80" placeholder="Ex.: Ilhéus, Pontal">
+    </div>
+    <fieldset class="campo campo--opcoes">
+      <legend>Como prefere receber?</legend>
+      <label class="opcao"><input type="radio" name="recebimento" value="Entrega" checked><span>Entrega</span></label>
+      <label class="opcao"><input type="radio" name="recebimento" value="Retirada na loja"><span>Retirar na loja</span></label>
+      <label class="opcao"><input type="radio" name="recebimento" value="A combinar"><span>A combinar</span></label>
+    </fieldset>
+    <div class="campo">
+      <label for="pedido-obs">Observações</label>
+      <textarea id="pedido-obs" name="observacoes" rows="3" maxlength="500" placeholder="Medida da parede, cores do ambiente, prazo desejado..."></textarea>
+    </div>
+    <p class="lgpd">Seus dados são usados apenas para responder a este pedido pelo WhatsApp e não ficam salvos em nosso site.</p>
+    <button class="botao botao--escuro botao--largo" type="submit">
+      <svg class="icone" aria-hidden="true"><use href="#i-conversa"/></svg>
+      Enviar pedido pelo WhatsApp
+    </button>
+  </form>
+
+  <!-- Etapa 3: confirmação -->
+  <div class="carrinho__etapa carrinho__sucesso" data-etapa="enviado" hidden tabindex="-1">
+    <svg class="icone icone--grande" aria-hidden="true"><use href="#i-check"/></svg>
+    <h3>Pedido pronto no WhatsApp</h3>
+    <p>Confira a mensagem e toque em enviar. Código do pedido: <strong data-codigo-pedido></strong></p>
+    <p class="texto-suave">Se o WhatsApp não abriu, use o botão abaixo.</p>
+    <a class="botao botao--escuro botao--largo" href="#" target="_blank" rel="noopener" data-reabrir-whatsapp>Abrir WhatsApp novamente</a>
+    <button class="botao botao--contorno botao--largo" type="button" data-limpar-carrinho>Concluir e esvaziar carrinho</button>
+  </div>
+</aside>
+
+<div class="toast" role="status" aria-live="polite" data-toast hidden></div>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Coleções · Cidade da Arte</title>
+  <meta name="description" content="Catálogo de quadros, espelhos e arte religiosa da Cidade da Arte. Filtre por ambiente, coleção e cor e envie seu pedido para orçamento pelo WhatsApp.">
+  <meta property="og:title" content="Coleções · Cidade da Arte">
+  <meta property="og:image" content="assets/img/cat-quadros.webp">
+  <!--@head-->
+</head>
+<body data-pagina="catalogo">
+<!--@icones-->
+<!--@header-->
+
+<main id="conteudo" class="container">
+  <div class="cabecalho-pagina">
+    <nav class="migalhas" aria-label="Você está em">
+      <ol><li><a href="index.html">Início</a></li><li><span aria-current="page">Catálogo</span></li></ol>
+    </nav>
+    <h1 data-titulo-catalogo>Coleções</h1>
+    <p data-intro-catalogo>Quadros, espelhos e arte religiosa. Pronta entrega ou sob medida, com valores confirmados no atendimento.</p>
+  </div>
+
+  <form class="filtros" data-filtros aria-label="Filtrar peças">
+    <div class="filtro"><label for="f-categoria">Categoria</label><select id="f-categoria" name="categoria"><option value="">Todas</option></select></div>
+    <div class="filtro"><label for="f-ambiente">Ambiente</label><select id="f-ambiente" name="ambiente"><option value="">Todos</option></select></div>
+    <div class="filtro"><label for="f-colecao">Coleção</label><select id="f-colecao" name="colecao"><option value="">Todas</option></select></div>
+    <div class="filtro"><label for="f-cor">Cor</label><select id="f-cor" name="cor"><option value="">Todas</option></select></div>
+    <div class="filtros__fim">
+      <p class="filtros__contagem" data-contagem aria-live="polite"></p>
+      <button class="botao botao--texto" type="button" data-limpar-filtros>Limpar filtros</button>
+    </div>
+  </form>
+
+  <ul class="grade-produtos" data-grade></ul>
+
+  <div class="estado-vazio" data-vazio hidden>
+    <svg class="icone icone--grande" aria-hidden="true"><use href="#i-moldura"/></svg>
+    <h2 class="titulo-secao">Nenhuma peça com esses filtros</h2>
+    <p class="texto-suave">Tente outra combinação ou peça uma peça sob medida.</p>
+    <a class="botao botao--escuro" href="sob-medida.html">Quero sob medida</a>
+  </div>
+
+  <section class="secao" aria-labelledby="nao-achou">
+    <div class="profissionais__cta" style="text-align:center">
+      <h2 class="titulo-secao" id="nao-achou">Não encontrou o que procura?</h2>
+      <p>Trabalhamos com muito mais peças na loja e fazemos sob medida para a sua parede.</p>
+      <div class="hero__acoes" style="justify-content:center;margin-top:0">
+        <a class="botao botao--escuro" href="sob-medida.html">Pedir sob medida</a>
+        <button class="botao botao--contorno" type="button" data-whatsapp="catalogo-nao-achou">Falar no WhatsApp</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!--@footer-->
+<!--@scripts-->
+<script src="assets/js/catalogo.js"></script>
+</body>
+</html>
