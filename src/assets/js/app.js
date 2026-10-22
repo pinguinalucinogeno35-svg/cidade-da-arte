@@ -218,6 +218,8 @@
   function abrirCarrinho() {
     if (!gaveta) return;
     ultimoFoco = document.activeElement;
+    var aviso = $('[data-toast]');
+    if (aviso) { clearTimeout(temporizadorToast); aviso.hidden = true; }
     renderizarCarrinho();
     mostrarEtapa('itens');
     gaveta.hidden = false;

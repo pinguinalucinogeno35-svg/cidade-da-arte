@@ -116,6 +116,7 @@ ul, ol.processo, ol.lista-passos { list-style: none; margin: 0; padding: 0; }
 }
 .link-seta .icone { width: 16px; height: 16px; transition: transform var(--transicao); }
 a:hover > .link-seta .icone, .link-seta:hover .icone { transform: translateX(4px); }
+a.link-seta { min-height: 44px; }
 
 .botao-icone {
   position: relative; display: inline-grid; place-items: center;
@@ -129,6 +130,7 @@ a:hover > .link-seta .icone, .link-seta:hover .icone { transform: translateX(4px
 /* ---------- Aviso de homologação ---------- */
 
 .aviso-homologacao { background: var(--areia); color: var(--carvao); text-align: center; font-size: .8125rem; padding: 6px 16px; }
+@media (max-width: 560px) { .aviso-homologacao { font-size: .75rem; padding: 5px 12px; } .aviso-homologacao__extra { display: none; } }
 
 /* ---------- Cabeçalho ---------- */
 
@@ -141,6 +143,8 @@ a:hover > .link-seta .icone, .link-seta:hover .icone { transform: translateX(4px
   transition: border-color var(--transicao);
 }
 .topo.is-rolado { border-bottom-color: var(--linha); }
+html.sem-rolagem .topo { background: var(--marfim); -webkit-backdrop-filter: none; backdrop-filter: none; }
+html.sem-rolagem .whats-flutuante { display: none; }
 .topo__inner { display: flex; align-items: center; gap: 24px; min-height: 76px; }
 .marca img { width: 124px; height: auto; }
 .nav { margin-left: auto; }
@@ -205,7 +209,7 @@ a:hover > .link-seta .icone, .link-seta:hover .icone { transform: translateX(4px
 }
 .selo-conceitual {
   position: absolute; right: 12px; bottom: 12px; z-index: 2;
-  background: rgba(25, 25, 25, .7); color: var(--marfim); font-size: .6875rem; letter-spacing: .08em;
+  background: rgba(25, 25, 25, .7); color: var(--marfim); font-size: .75rem; letter-spacing: .06em;
   text-transform: uppercase; padding: 4px 8px;
 }
 @media (max-width: 860px) {
@@ -233,8 +237,8 @@ a:hover > .link-seta .icone, .link-seta:hover .icone { transform: translateX(4px
 /* ---------- Cartões de categoria / ambiente ---------- */
 
 .grade-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(12px, 1.6vw, 20px); }
-@media (max-width: 860px) { .grade-3 { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 560px) { .grade-3 { grid-template-columns: 1fr; } }
+/* 3 colunas até 640px para não deixar cartão órfão em tablet; 1 coluna no celular */
+@media (max-width: 640px) { .grade-3 { grid-template-columns: 1fr; } }
 
 .cartao-categoria { display: block; text-decoration: none; background: var(--marfim-2); height: 100%; }
 .cartao-categoria__imagem { overflow: hidden; aspect-ratio: 4 / 3; }
@@ -255,6 +259,8 @@ a:hover > .link-seta .icone, .link-seta:hover .icone { transform: translateX(4px
 @media (max-width: 1080px) { .grade-produtos { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 760px) { .grade-produtos { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 420px) { .grade-produtos { grid-template-columns: 1fr; } }
+/* Vitrine de 4 destaques: 2 x 2 em tablet, sem item órfão */
+@media (max-width: 1080px) and (min-width: 421px) { .grade-produtos--quatro { grid-template-columns: 1fr 1fr; } }
 
 .cartao-produto__link { display: block; text-decoration: none; height: 100%; }
 .cartao-produto__imagem { aspect-ratio: 4 / 3; overflow: hidden; background: var(--marfim-2); }
@@ -376,7 +382,7 @@ input[aria-invalid='true'] { border-color: var(--erro); }
 .produto__info h1 { font-size: clamp(2.5rem, 4.4vw, 3.75rem); line-height: 1.02; margin-top: 10px; }
 .produto__codigo { font-size: .8125rem; color: var(--texto-2); margin-top: 16px; letter-spacing: .04em; }
 .produto__descricao { margin-top: 20px; color: var(--texto-2); font-size: 1.0625rem; }
-.produto__preco { display: flex; align-items: baseline; gap: 10px; margin-top: 24px; padding-block: 16px; border-block: 1px solid var(--linha); }
+.produto__preco { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin-top: 24px; padding-block: 16px; border-block: 1px solid var(--linha); }
 .produto__preco strong { font: 500 1.625rem/1.2 var(--serifa); }
 .produto__preco span { font-size: .875rem; color: var(--texto-2); }
 

@@ -17,6 +17,7 @@ rmSync(dist, { recursive: true, force: true });
 mkdirSync(dist, { recursive: true });
 cpSync(join(src, 'assets'), join(dist, 'assets'), { recursive: true });
 cpSync(join(src, 'robots.txt'), join(dist, 'robots.txt'));
+cpSync(join(src, '_headers'), join(dist, '_headers'));
 
 for (const arquivo of readdirSync(join(src, 'pages')).filter((f) => f.endsWith('.html'))) {
   let html = readFileSync(join(src, 'pages', arquivo), 'utf8');
