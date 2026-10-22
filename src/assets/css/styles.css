@@ -76,6 +76,7 @@ ul, ol.processo, ol.lista-passos { list-style: none; margin: 0; padding: 0; }
   font: 500 .75rem/1.3 var(--sans);
   letter-spacing: .14em;
   text-transform: uppercase;
+  font-feature-settings: 'case';
   color: var(--areia-texto);
 }
 .titulo-secao { font-size: clamp(2rem, 4vw, 3rem); }
@@ -191,7 +192,7 @@ a:hover > .link-seta .icone, .link-seta:hover .icone { transform: translateX(4px
   padding: clamp(40px, 6vw, 80px) var(--gutter);
   padding-left: max(var(--gutter), calc((100vw - var(--container)) / 2));
 }
-.hero__titulo { font-size: clamp(2.75rem, 6.2vw, 5rem); line-height: 1.02; }
+.hero__titulo { font-size: clamp(2.75rem, 6.2vw, 5rem); line-height: 1.04; letter-spacing: -.02em; }
 .hero__sub { margin-top: 20px; font-size: clamp(1rem, 1.4vw, 1.125rem); color: var(--texto-2); max-width: 34ch; }
 .hero__acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 .hero__midia { position: relative; }
@@ -258,7 +259,7 @@ a:hover > .link-seta .icone, .link-seta:hover .icone { transform: translateX(4px
 .cartao-produto__imagem img { width: 100%; height: 100%; object-fit: cover; transition: transform 600ms cubic-bezier(.2, .7, .2, 1); }
 .cartao-produto__link:hover img { transform: scale(1.04); }
 .cartao-produto__info { padding-top: 14px; display: grid; gap: 6px; }
-.cartao-produto__nome { font-size: 1.25rem; line-height: 1.2; }
+.cartao-produto__nome { font-size: 1.25rem; line-height: 1.2; letter-spacing: 0; }
 .cartao-produto__meta { font-size: .8125rem; color: var(--texto-2); }
 .cartao-produto .link-seta { margin-top: 6px; }
 
@@ -317,7 +318,7 @@ a:hover > .link-seta .icone, .link-seta:hover .icone { transform: translateX(4px
 /* ---------- Páginas internas ---------- */
 
 .cabecalho-pagina { padding-block: clamp(40px, 6vw, 72px) clamp(24px, 3vw, 40px); }
-.cabecalho-pagina h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-top: 10px; }
+.cabecalho-pagina h1 { font-size: clamp(2.25rem, 5vw, 4rem); line-height: 1.08; letter-spacing: -.015em; margin-top: 10px; }
 .cabecalho-pagina p:not(.sobretitulo) { margin-top: 14px; color: var(--texto-2); max-width: 60ch; font-size: 1.0625rem; }
 
 .migalhas ol { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; font-size: .8125rem; color: var(--texto-2); }
