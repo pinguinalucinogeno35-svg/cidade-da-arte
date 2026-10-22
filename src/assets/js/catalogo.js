@@ -9,7 +9,7 @@
   var titulo = C.$('[data-titulo-catalogo]');
   var intro = C.$('[data-intro-catalogo]');
   var CAMPOS = ['categoria', 'ambiente', 'colecao', 'cor'];
-  var NOMES_COR = { terroso: 'Terrosos', preto: 'Preto', branco: 'Branco', dourado: 'Dourado', azul: 'Azul', verde: 'Verde', amarelo: 'Amarelo', laranja: 'Laranja', madeira: 'Madeira' };
+  var NOMES_COR = { terroso: 'Terrosos', preto: 'Preto', branco: 'Branco', dourado: 'Dourado', azul: 'Azul', verde: 'Verde', amarelo: 'Amarelo', laranja: 'Laranja', madeira: 'Madeira', bege: 'Bege e areia', colorido: 'Colorido' };
 
   function opcoes(select, mapa) {
     Object.keys(mapa).forEach(function (valor) {
@@ -52,13 +52,23 @@
 
     grade.innerHTML = lista.map(C.cartaoProduto).join('');
     vazio.hidden = lista.length > 0;
+    var espelhosSemFotos = f.categoria === 'espelhos' && lista.length === 0;
+    C.$('[data-vazio-titulo]').textContent = espelhosSemFotos ? 'Catálogo de espelhos em preparação' : 'Nenhuma peça com esses filtros';
+    C.$('[data-vazio-texto]').textContent = espelhosSemFotos
+      ? 'Os espelhos estão sendo fotografados. Fale com a equipe para ver os modelos disponíveis ou peça um espelho sob medida.'
+      : 'Tente outra combinação ou peça uma peça sob medida.';
     contador.textContent = lista.length + (lista.length === 1 ? ' peça' : ' peças');
 
     var colecao = f.colecao && window.CDA_COLECOES[f.colecao];
     if (colecao) { titulo.textContent = colecao.nome; intro.textContent = colecao.descricao; }
-    else if (f.categoria) { titulo.textContent = window.CDA_CATEGORIAS[f.categoria]; intro.textContent = 'Escolha a peça, defina tamanho e acabamento e envie para orçamento.'; }
+    else if (f.categoria) {
+      titulo.textContent = window.CDA_CATEGORIAS[f.categoria];
+      intro.textContent = f.categoria === 'espelhos'
+        ? 'Espelhos de design, a pronta entrega e sob medida.'
+        : 'Escolha a peça, defina tamanho e acabamento e envie para orçamento.';
+    }
     else if (f.ambiente) { titulo.textContent = 'Para ' + window.CDA_AMBIENTES[f.ambiente].toLowerCase(); intro.textContent = 'Peças que funcionam bem neste ambiente.'; }
-    else { titulo.textContent = 'Coleções'; intro.textContent = 'Quadros, espelhos e arte religiosa. Pronta entrega ou sob medida, com valores confirmados no atendimento.'; }
+    else { titulo.textContent = 'Coleções'; intro.textContent = 'Catálogo 2026/27. Pronta entrega ou sob medida, com valores confirmados no atendimento.'; }
     document.title = titulo.textContent + ' · Cidade da Arte';
 
     if (registrarHistorico) {

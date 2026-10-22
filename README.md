@@ -81,8 +81,13 @@ Os eventos vão para `window.dataLayer` e estão prontos para GTM/GA4. Nenhum sc
 ## Pendências antes de publicar
 
 - [ ] **WhatsApp real** em `src/assets/js/config.js`. Hoje está o número fictício `(73) 90000-0000`; depois de trocar, defina `whatsappProvisorio: false`.
-- [ ] **Fotos reais e autorizadas** no lugar das imagens conceituais de `src/assets/img/`, que são recortes dos mockups do handoff e do feed.
-- [ ] **Catálogo real** em `src/assets/js/produtos.js`: nomes, códigos, tamanhos e acabamentos oferecidos de fato.
+- [x] **Catálogo 2026/27** em `src/assets/js/produtos.js`: 29 quadros (NOV 18 a NOV 53) com as imagens enviadas pela cliente.
+- [ ] **Validar com a cliente** os nomes descritivos (sugeridos pela ONE, o catálogo só tem códigos), coleções e ambientes de cada peça.
+- [ ] **Tamanhos e molduras** de cada peça: hoje o cliente escolhe "Tamanho do catálogo" ou "Sob medida", e "Moldura como na foto" ou "Outra moldura".
+- [ ] **Códigos repetidos**: NOV 30 e NOV 31 aparecem em imagens diferentes nas páginas 6 e 7 do catálogo. Confirmar os códigos corretos.
+- [ ] **Imagens sem o código escrito** (NOV 21, 30, 31, 32, 33, 34, 35, 36, 42, 43 trazem o texto "NOV" sobre a foto).
+- [ ] **Espelhos**: o catálogo não tem espelhos. A categoria mostra "catálogo de espelhos em preparação" até chegarem as fotos.
+- [ ] **Imagens conceituais restantes** (`cat-espelhos`, `amb-quarto`, `loja-textura`): trocar por fotos reais.
 - [ ] Horário de funcionamento, política de entrega/instalação e condições para profissionais.
 - [ ] Logo vetorial oficial (hoje é a imagem original recebida, apenas sem o fundo).
 - [ ] Desligar `homologacao` em `config.js`; trocar `noindex` em `src/partials/head.html` e `src/robots.txt`; adicionar domínio, `canonical` e `sitemap.xml`.

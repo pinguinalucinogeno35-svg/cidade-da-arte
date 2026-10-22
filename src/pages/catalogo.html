@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <title>Coleções · Cidade da Arte</title>
-  <meta name="description" content="Catálogo de quadros, espelhos e arte religiosa da Cidade da Arte. Filtre por ambiente, coleção e cor e envie seu pedido para orçamento pelo WhatsApp.">
+  <meta name="description" content="Catálogo 2026/27 de quadros da Cidade da Arte. Filtre por ambiente, coleção e cor e envie seu pedido para orçamento pelo WhatsApp.">
   <meta property="og:title" content="Coleções · Cidade da Arte">
-  <meta property="og:image" content="assets/img/cat-quadros.webp">
+  <meta property="og:image" content="assets/img/nov-41.webp">
   <!--@head-->
 </head>
 <body data-pagina="catalogo">
@@ -18,7 +18,7 @@
       <ol><li><a href="index.html">Início</a></li><li><span aria-current="page">Catálogo</span></li></ol>
     </nav>
     <h1 data-titulo-catalogo>Coleções</h1>
-    <p data-intro-catalogo>Quadros, espelhos e arte religiosa. Pronta entrega ou sob medida, com valores confirmados no atendimento.</p>
+    <p data-intro-catalogo>Catálogo 2026/27. Pronta entrega ou sob medida, com valores confirmados no atendimento.</p>
   </div>
 
   <form class="filtros" data-filtros aria-label="Filtrar peças">
@@ -36,9 +36,12 @@
 
   <div class="estado-vazio" data-vazio hidden>
     <svg class="icone icone--grande" aria-hidden="true"><use href="#i-moldura"/></svg>
-    <h2 class="titulo-secao">Nenhuma peça com esses filtros</h2>
-    <p class="texto-suave">Tente outra combinação ou peça uma peça sob medida.</p>
-    <a class="botao botao--escuro" href="sob-medida.html">Quero sob medida</a>
+    <h2 class="titulo-secao" data-vazio-titulo>Nenhuma peça com esses filtros</h2>
+    <p class="texto-suave" data-vazio-texto>Tente outra combinação ou peça uma peça sob medida.</p>
+    <div class="hero__acoes" style="justify-content:center;margin-top:8px">
+      <a class="botao botao--escuro" href="sob-medida.html">Quero sob medida</a>
+      <button class="botao botao--contorno" type="button" data-whatsapp="catalogo-vazio">Falar no WhatsApp</button>
+    </div>
   </div>
 
   <section class="secao" aria-labelledby="nao-achou">

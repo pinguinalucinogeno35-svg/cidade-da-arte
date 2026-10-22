@@ -6,7 +6,7 @@
   'use strict';
 
   var CONFIG = window.CDA_CONFIG;
-  var CHAVE_CARRINHO = 'cda:carrinho:v1';
+  var CHAVE_CARRINHO = 'cda:carrinho:v2';
   var CAMINHO_IMG = 'assets/img/';
 
   /* ---------- Utilidades ---------- */
@@ -389,6 +389,12 @@
 
   /* ---------- Cartões de produto (usados em várias páginas) ---------- */
 
+  function formatoPecas(p) {
+    if (p.pecas === 2) return 'Díptico · 2 peças';
+    if (p.pecas === 3) return 'Trio · 3 peças';
+    return 'Peça única';
+  }
+
   function cartaoProduto(p) {
     var categoria = (window.CDA_CATEGORIAS || {})[p.categoria] || '';
     var colecao = ((window.CDA_COLECOES || {})[p.colecao] || {}).nome || '';
@@ -400,7 +406,7 @@
         '<div class="cartao-produto__info">' +
           '<p class="sobretitulo">' + escapar(colecao || categoria) + '</p>' +
           '<h3 class="cartao-produto__nome">' + escapar(p.nome) + '</h3>' +
-          '<p class="cartao-produto__meta">Pronta entrega ou sob medida · Valor sob consulta</p>' +
+          '<p class="cartao-produto__meta">' + escapar(p.codigo) + ' · ' + formatoPecas(p) + '</p>' +
           '<span class="link-seta">Ver detalhes ' + icone('seta') + '</span>' +
         '</div>' +
       '</a>' +
@@ -411,7 +417,7 @@
 
   window.CDA = {
     $: $, $$: $$, escapar: escapar, icone: icone, rastrear: rastrear, toast: toast,
-    produtoPorId: produtoPorId, cartaoProduto: cartaoProduto,
+    produtoPorId: produtoPorId, cartaoProduto: cartaoProduto, formatoPecas: formatoPecas,
     adicionarAoCarrinho: adicionarAoCarrinho, abrirCarrinho: abrirCarrinho,
     abrirWhatsApp: abrirWhatsApp, mensagemProdutoUnico: mensagemProdutoUnico,
     CAMINHO_IMG: CAMINHO_IMG,

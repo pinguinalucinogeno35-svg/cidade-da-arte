@@ -23,6 +23,7 @@
   C.$('[data-nome]').textContent = p.nome;
   C.$('[data-codigo]').textContent = 'Cód. ' + p.codigo;
   C.$('[data-descricao]').textContent = p.descricao;
+  C.$('[data-formato]').textContent = C.formatoPecas(p);
   C.$('[data-ambientes]').textContent = p.ambientes.map(function (a) { return window.CDA_AMBIENTES[a]; }).join(', ');
 
   // Galeria

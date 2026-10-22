@@ -9,7 +9,7 @@
 
   var colecoes = C.$('[data-colecoes]');
   if (colecoes) {
-    var capas = { 'colecao-2026': 'feed-asas.webp', 'mar-natureza': 'feed-praia.webp', botanicos: 'feed-limoes.webp', classicos: 'feed-tempestade.webp' };
+    var capas = { dourados: 'nov-29.webp', mediterraneo: 'nov-46-47.webp', 'mar-paisagens': 'nov-35.webp', 'flores-secas': 'nov-52.webp' };
     colecoes.innerHTML = Object.keys(capas).map(function (id) {
       var col = window.CDA_COLECOES[id];
       return '<li><a class="cartao-colecao" href="catalogo.html?colecao=' + id + '">' +
