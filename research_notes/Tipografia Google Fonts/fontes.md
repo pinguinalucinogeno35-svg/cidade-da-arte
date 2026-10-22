@@ -206,3 +206,11 @@ Outras regras:
 - Typewolf: https://www.typewolf.com/google-fonts, /cormorant, /canela, /fraunces, /playfair-display, /inter, /dm-sans, /manrope, /work-sans, /eb-garamond
 - Fonts In Use: https://fontsinuse.com/typefaces/152858/newsreader, https://fontsinuse.com/typefaces/219915/instrument-serif, https://fontsinuse.com/typefaces/45804/cormorant, https://fontsinuse.com/search?terms=fraunces, https://fontsinuse.com/search?terms=gloock, https://fontsinuse.com/search?terms=manrope
 - Sites de referência (`<head>`): https://www.framebridge.com/, https://www.lumas.com/, https://boemi.com.br/ (+ https://use.typekit.net/msp8qhw.css e `custom-fonts.css`), https://www.democrart.com.br/
+
+## Decisão final (22/10/2026)
+
+A pedido da agência ("fontes mais atrativas"), as 10 combinações foram renderizadas lado a lado no título real do site ("Leve arte para sua vida."), com acentos do português. Escolha: **Cormorant Garamond 500/600 + itálico 500 (títulos) + Manrope 400/500/600 (texto)**.
+
+- Cormorant Garamond: serifa de alto contraste com cara de galeria e itálico expressivo, usado em destaques como "vida.". Por ter altura-x pequena, os títulos foram aumentados de 10% a 20% e o peso passou para 500.
+- Manrope: o "a" de dois andares conversa com a logo, e o desenho é mais refinado que o da Inter.
+- Descartadas na comparação visual: Playfair Display (comum demais), Bodoni Moda e Italiana (traços finos frágeis em tamanhos menores) e Gloock (pesada para o tom do site).
