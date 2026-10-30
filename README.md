@@ -80,7 +80,7 @@ Os eventos vão para `window.dataLayer` e estão prontos para GTM/GA4. Nenhum sc
 
 ## Pendências antes de publicar
 
-- [ ] **WhatsApp real** em `src/assets/js/config.js`. Hoje está o número fictício `(73) 90000-0000`; depois de trocar, defina `whatsappProvisorio: false`.
+- [x] **WhatsApp oficial** `(73) 3223-2082` configurado em `src/assets/js/config.js`. Como é um número fixo, confirmar que ele está ativo no WhatsApp Business: abrir https://wa.me/557332232082 deve iniciar a conversa com a loja.
 - [x] **Catálogo 2026/27** em `src/assets/js/produtos.js`: 29 quadros (NOV 18 a NOV 53) com as imagens enviadas pela cliente.
 - [ ] **Validar com a cliente** os nomes descritivos (sugeridos pela ONE, o catálogo só tem códigos), coleções e ambientes de cada peça.
 - [ ] **Tamanhos e molduras** de cada peça: hoje o cliente escolhe "Tamanho do catálogo" ou "Sob medida", e "Moldura como na foto" ou "Outra moldura".
