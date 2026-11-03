@@ -359,6 +359,10 @@
     $$('[data-nav-item]').forEach(function (a) {
       if (a.getAttribute('data-nav-item') === ativo) a.setAttribute('aria-current', 'page');
     });
+    var abaApp = pagina === 'inicio' ? 'inicio' : pagina === 'parede' ? 'parede' : pagina === 'catalogo' || pagina === 'produto' ? 'catalogo' : '';
+    $$('[data-aba-app]').forEach(function (a) {
+      if (a.getAttribute('data-aba-app') === abaApp) a.setAttribute('aria-current', 'page');
+    });
 
     var topo = $('[data-topo]');
     if (topo) {
@@ -425,10 +429,51 @@
     CAMINHO_IMG: CAMINHO_IMG,
   };
 
+  /* ---------- App (PWA): service worker e instalação ---------- */
+
+  function iniciarApp() {
+    if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('sw.js').catch(function () { /* sem cache offline */ });
+      });
+    }
+
+    var instalado = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    if (instalado) {
+      document.documentElement.classList.add('is-app');
+      return;
+    }
+
+    var pedidoInstalacao = null;
+    window.addEventListener('beforeinstallprompt', function (e) {
+      e.preventDefault();
+      pedidoInstalacao = e;
+      $$('[data-instalar]').forEach(function (b) { b.hidden = false; });
+    });
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('[data-instalar]') || !pedidoInstalacao) return;
+      pedidoInstalacao.prompt();
+      pedidoInstalacao.userChoice.then(function (escolha) {
+        rastrear('app_install_prompt', { resultado: escolha.outcome });
+        if (escolha.outcome === 'accepted') $$('[data-instalar]').forEach(function (b) { b.hidden = true; });
+        pedidoInstalacao = null;
+      });
+    });
+    window.addEventListener('appinstalled', function () {
+      rastrear('app_installed', {});
+      $$('[data-instalar]').forEach(function (b) { b.hidden = true; });
+    });
+
+    // iPhone/iPad não têm prompt de instalação: mostra a instrução do Safari
+    var ios = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    if (ios) $$('[data-instrucoes-ios]').forEach(function (el) { el.hidden = false; });
+  }
+
   function iniciar() {
     iniciarCabecalho();
     iniciarGaveta();
     iniciarWhatsAppGeral();
+    iniciarApp();
     atualizarContador();
     // Mantém o contador em sincronia entre abas.
     window.addEventListener('storage', function (e) { if (e.key === CHAVE_CARRINHO) { atualizarContador(); renderizarCarrinho(); } });

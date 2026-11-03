@@ -35,6 +35,8 @@
     var p = {
       id: img.replace(/\.webp$/, ''), codigo: codigo, nome: nome, pecas: pecas, categoria: 'quadros', colecao: colecao,
       ambientes: ambientes, cores: cores, imagens: [img], descricao: descricao,
+      // Só a arte, sem o ambiente, para o "Ver na minha parede" (scripts/recortar-artes.py)
+      arte: 'arte/' + img,
       tamanhos: TAMANHOS, acabamentos: ACABAMENTOS,
     };
     for (var k in extra) if (Object.prototype.hasOwnProperty.call(extra, k)) p[k] = extra[k];

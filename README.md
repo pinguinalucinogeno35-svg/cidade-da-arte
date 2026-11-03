@@ -64,6 +64,27 @@ Recebimento: Entrega
 Pode me informar valores, disponibilidade e prazo? Obrigado!
 ```
 
+## App (PWA) e "Ver na minha parede"
+
+O site também é um app instalável. No Android/Chrome aparece o botão **Instalar o app** (home e rodapé); no iPhone, Safari > Compartilhar > **Adicionar à Tela de Início**. Instalado, abre em tela cheia direto no catálogo, com barra inferior (Início, Catálogo, Na parede, Carrinho, WhatsApp) e funciona offline com as páginas e peças já vistas.
+
+- `src/manifest.webmanifest`: nome, cores, ícones e atalhos do app.
+- `src/sw.js`: service worker. O build injeta a versão (hash dos arquivos) e a lista do shell; cada publicação atualiza o app sozinho.
+- `src/pages/offline.html`: aviso exibido quando não há internet e a página não está no cache.
+- `src/assets/icones-app/`: ícones gerados do símbolo original da logo.
+
+**Ver na minha parede** (`parede.html`, `src/assets/js/parede.js`):
+
+1. O cliente abre a câmera traseira (ou envia uma foto da parede, se não puder usar a câmera).
+2. A peça escolhida aparece sobre a imagem: arrasta com o dedo, ajusta o tamanho com dois dedos (ou roda do mouse) e a luz para combinar com o ambiente.
+3. Informando a largura da parede que aparece na tela, o app mostra a medida aproximada da peça em cm.
+4. Tira a foto da simulação e compartilha (WhatsApp, Instagram), salva, pede orçamento ou adiciona ao carrinho com a medida.
+5. **Minha arte**: o cliente envia a foto de uma arte própria, escolhe moldura (preta, branca, madeira, dourada) e passe-partout, e testa na parede. Vira um pedido "Emoldurar minha arte".
+
+A câmera exige HTTPS (o Netlify já serve assim). Nenhuma imagem sai do aparelho do cliente.
+
+As artes sobrepostas na câmera são recortes das fotos do catálogo, sem o ambiente: `src/assets/img/arte/`, gerados por `python3 scripts/recortar-artes.py` (Pillow e NumPy). Ao incluir uma peça nova, adicione as coordenadas dos painéis nesse script ou, melhor, peça à cliente a imagem só da arte.
+
 ## Mensuração
 
 Os eventos vão para `window.dataLayer` e estão prontos para GTM/GA4. Nenhum script de analytics é carregado ainda, porque isso depende da definição de consentimento (LGPD).
@@ -77,6 +98,9 @@ Os eventos vão para `window.dataLayer` e estão prontos para GTM/GA4. Nenhum sc
 | `whatsapp_click` | qualquer abertura do WhatsApp (`origem` indica o botão) |
 | `generate_lead` | pedido enviado (carrinho, produto ou sob medida) |
 | `filter_catalog` | muda filtro no catálogo |
+| `wall_preview_start` / `wall_preview_select` | abre a simulação na parede / troca de peça |
+| `wall_preview_capture` / `wall_preview_share` | tira e compartilha a foto da simulação |
+| `app_install_prompt` / `app_installed` | pedido e instalação do app |
 
 ## Pendências antes de publicar
 
@@ -89,6 +113,7 @@ Os eventos vão para `window.dataLayer` e estão prontos para GTM/GA4. Nenhum sc
 - [ ] **Espelhos**: o catálogo não tem espelhos. A categoria mostra "catálogo de espelhos em preparação" até chegarem as fotos.
 - [ ] **Imagens conceituais restantes** (`cat-espelhos`, `amb-quarto`, `loja-textura`): trocar por fotos reais.
 - [ ] Horário de funcionamento, política de entrega/instalação e condições para profissionais.
-- [ ] Logo vetorial oficial (hoje é a imagem original recebida, apenas sem o fundo).
+- [ ] Logo vetorial oficial (hoje é a imagem original recebida, apenas sem o fundo; os ícones do app foram ampliados dela).
+- [ ] **Imagens só da arte** (sem ambiente) de cada peça, para a simulação na parede ficar mais nítida e com medidas reais.
 - [ ] Desligar `homologacao` em `config.js`; trocar `noindex` em `src/partials/head.html` e `src/robots.txt`; adicionar domínio, `canonical` e `sitemap.xml`.
 - [ ] Ligar GTM/GA4 com banner de consentimento.

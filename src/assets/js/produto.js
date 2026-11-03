@@ -92,11 +92,7 @@
     C.rastrear('generate_lead', { origem: 'produto', item_id: p.codigo });
   });
 
-  C.$('[data-ver-na-parede]').addEventListener('click', function () {
-    var mensagem = 'Olá, Cidade da Arte! Gostaria de ver como a peça "' + p.nome + '" (' + p.codigo + ') fica na minha parede. ' +
-      'Vou enviar uma foto do ambiente e a largura da parede.';
-    C.abrirWhatsApp(mensagem, 'ver-na-parede', { item_id: p.codigo });
-  });
+  C.$('[data-ver-na-parede]').href = 'parede.html?id=' + encodeURIComponent(p.id);
 
   // Relacionados: mesma coleção primeiro, depois mesma categoria
   var relacionados = window.CDA_PRODUTOS.filter(function (o) { return o.id !== p.id && o.colecao === p.colecao; })

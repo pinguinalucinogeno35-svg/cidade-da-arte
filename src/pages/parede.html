@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Ver na minha parede · Cidade da Arte</title>
+  <meta name="description" content="Use a câmera do celular para ver como o quadro da Cidade da Arte fica na sua parede, ou teste a moldura na sua própria arte.">
+  <meta property="og:title" content="Ver na minha parede · Cidade da Arte">
+  <meta property="og:image" content="assets/img/nov-19-20.webp">
+  <!--@head-->
+</head>
+<body data-pagina="parede" class="pagina-parede">
+<!--@icones-->
+<a class="pular" href="#palco">Pular para a simulação</a>
+
+<main class="parede" data-parede>
+  <header class="parede__topo">
+    <a class="botao-icone parede__voltar" href="catalogo.html" data-voltar>
+      <svg class="icone" aria-hidden="true"><use href="#i-voltar"/></svg>
+      <span class="visualmente-oculto">Voltar</span>
+    </a>
+    <div class="parede__titulo">
+      <p class="parede__sobretitulo">Ver na minha parede</p>
+      <p class="parede__nome" data-peca-nome>Escolha uma peça</p>
+    </div>
+    <button class="botao-icone carrinho-botao parede__carrinho" type="button" data-abrir-carrinho aria-controls="carrinho" aria-expanded="false">
+      <svg class="icone" aria-hidden="true"><use href="#i-carrinho"/></svg>
+      <span class="visualmente-oculto">Abrir carrinho</span>
+      <span class="carrinho-botao__contador" data-contador-carrinho aria-live="polite">0</span>
+    </button>
+  </header>
+
+  <div class="parede__palco" id="palco" data-palco>
+    <video class="parede__fundo" data-video playsinline muted autoplay hidden></video>
+    <img class="parede__fundo" data-foto-parede alt="Foto da sua parede" hidden>
+    <div class="parede__peca" data-peca hidden>
+      <img data-peca-img alt="" draggable="false">
+    </div>
+
+    <div class="parede__inicio" data-inicio>
+      <svg class="icone icone--grande" aria-hidden="true"><use href="#i-parede"/></svg>
+      <h1>Veja o quadro na sua parede</h1>
+      <p>Aponte a câmera para a parede, posicione a peça com o dedo e ajuste o tamanho. Depois tire uma foto e mande para a loja.</p>
+      <button class="botao botao--claro botao--largo" type="button" data-abrir-camera>
+        <svg class="icone" aria-hidden="true"><use href="#i-camera"/></svg> Abrir câmera
+      </button>
+      <label class="botao botao--contorno-claro botao--largo">
+        <svg class="icone" aria-hidden="true"><use href="#i-moldura"/></svg> Usar foto da parede
+        <input class="visualmente-oculto" type="file" accept="image/*" data-arquivo-parede>
+      </label>
+      <p class="parede__erro" data-erro-camera role="alert" hidden></p>
+      <p class="parede__privacidade">As imagens da câmera ficam só no seu aparelho. Nada é enviado ao nosso site.</p>
+    </div>
+
+    <p class="parede__dica" data-dica hidden>Arraste para posicionar. Use dois dedos para ajustar o tamanho.</p>
+  </div>
+
+  <section class="parede__painel" data-painel aria-label="Ajustes da simulação" hidden>
+    <div class="parede__atual">
+      <img class="parede__miniatura" data-miniatura alt="" width="56" height="56">
+      <div class="parede__atual-texto">
+        <p class="parede__atual-nome" data-atual-nome></p>
+        <p class="parede__atual-codigo" data-atual-codigo></p>
+      </div>
+      <button class="botao botao--contorno-claro botao--pequeno" type="button" data-abrir-seletor>Trocar peça</button>
+    </div>
+
+    <div class="parede__controles">
+      <label class="controle">
+        <span>Tamanho</span>
+        <input type="range" min="10" max="100" step="1" value="55" data-tamanho aria-describedby="medida-peca">
+      </label>
+      <label class="controle">
+        <span>Luz</span>
+        <input type="range" min="60" max="130" step="1" value="100" data-luz>
+      </label>
+      <label class="controle controle--medida">
+        <span>Largura da parede na tela (m)</span>
+        <input type="number" inputmode="decimal" min="0.5" max="20" step="0.1" placeholder="Ex.: 3" data-largura-parede>
+      </label>
+      <p class="parede__medida" id="medida-peca" data-medida aria-live="polite">Informe a largura da parede para ver a medida aproximada.</p>
+    </div>
+
+    <div class="parede__acoes">
+      <button class="botao-acao" type="button" data-trocar-fundo>
+        <svg class="icone" aria-hidden="true"><use href="#i-moldura"/></svg>
+        <span data-trocar-fundo-texto>Usar foto</span>
+      </button>
+      <button class="botao-capturar" type="button" data-capturar>
+        <span class="visualmente-oculto">Tirar foto da simulação</span>
+      </button>
+      <button class="botao-acao" type="button" data-adicionar>
+        <svg class="icone" aria-hidden="true"><use href="#i-carrinho"/></svg>
+        <span>Carrinho</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Seletor de peça: catálogo ou arte do cliente -->
+  <div class="folha-fundo" data-fechar-folha hidden></div>
+  <section class="folha" data-seletor role="dialog" aria-modal="true" aria-labelledby="seletor-titulo" hidden>
+    <div class="folha__topo">
+      <h2 id="seletor-titulo">Escolha a peça</h2>
+      <button class="botao-icone" type="button" data-fechar-folha>
+        <svg class="icone" aria-hidden="true"><use href="#i-fechar"/></svg>
+        <span class="visualmente-oculto">Fechar</span>
+      </button>
+    </div>
+    <div class="abas" role="tablist" aria-label="Origem da peça">
+      <button class="aba" type="button" role="tab" id="aba-catalogo" aria-controls="painel-catalogo" aria-selected="true" data-aba="catalogo">Catálogo</button>
+      <button class="aba" type="button" role="tab" id="aba-minha-arte" aria-controls="painel-minha-arte" aria-selected="false" data-aba="minha-arte">Minha arte</button>
+    </div>
+    <div class="folha__conteudo" id="painel-catalogo" role="tabpanel" aria-labelledby="aba-catalogo" data-painel-aba="catalogo">
+      <ul class="seletor-grade" data-seletor-grade></ul>
+    </div>
+    <div class="folha__conteudo" id="painel-minha-arte" role="tabpanel" aria-labelledby="aba-minha-arte" data-painel-aba="minha-arte" hidden>
+      <p class="texto-suave">Tem uma foto, gravura ou pintura? Envie a imagem, escolha a moldura e veja como fica na parede.</p>
+      <label class="botao botao--contorno botao--largo">
+        <svg class="icone" aria-hidden="true"><use href="#i-moldura"/></svg> Escolher imagem da minha arte
+        <input class="visualmente-oculto" type="file" accept="image/*" data-arquivo-arte>
+      </label>
+      <div class="minha-arte" data-minha-arte hidden>
+        <canvas class="minha-arte__previa" data-previa-arte aria-label="Prévia da sua arte emoldurada" role="img"></canvas>
+        <fieldset class="campo campo--opcoes">
+          <legend>Moldura</legend>
+          <label class="opcao"><input type="radio" name="moldura" value="Sem moldura"><span>Sem moldura</span></label>
+          <label class="opcao"><input type="radio" name="moldura" value="Moldura preta" checked><span>Preta</span></label>
+          <label class="opcao"><input type="radio" name="moldura" value="Moldura branca"><span>Branca</span></label>
+          <label class="opcao"><input type="radio" name="moldura" value="Moldura madeira natural"><span>Madeira</span></label>
+          <label class="opcao"><input type="radio" name="moldura" value="Moldura dourada"><span>Dourada</span></label>
+        </fieldset>
+        <label class="interruptor">
+          <input type="checkbox" data-passe-partout checked>
+          <span>Passe-partout (margem clara em volta da arte)</span>
+        </label>
+        <button class="botao botao--escuro botao--largo" type="button" data-usar-minha-arte>Ver na parede</button>
+        <p class="lgpd">A imagem da sua arte não sai do seu aparelho.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resultado da foto -->
+  <section class="folha folha--resultado" data-resultado role="dialog" aria-modal="true" aria-labelledby="resultado-titulo" hidden>
+    <div class="folha__topo">
+      <h2 id="resultado-titulo">Sua simulação</h2>
+      <button class="botao-icone" type="button" data-fechar-folha>
+        <svg class="icone" aria-hidden="true"><use href="#i-fechar"/></svg>
+        <span class="visualmente-oculto">Fechar</span>
+      </button>
+    </div>
+    <div class="folha__conteudo">
+      <img class="resultado__foto" data-foto-resultado alt="Foto da simulação com a peça na sua parede">
+      <p class="resultado__medida" data-resultado-medida></p>
+      <div class="resultado__acoes">
+        <button class="botao botao--escuro botao--largo" type="button" data-compartilhar hidden>
+          <svg class="icone" aria-hidden="true"><use href="#i-compartilhar"/></svg> Compartilhar foto
+        </button>
+        <button class="botao botao--escuro botao--largo" type="button" data-whats-resultado>
+          <svg class="icone" aria-hidden="true"><use href="#i-conversa"/></svg> Pedir orçamento no WhatsApp
+        </button>
+        <a class="botao botao--contorno botao--largo" href="#" download data-baixar>
+          <svg class="icone" aria-hidden="true"><use href="#i-baixar"/></svg> Salvar foto
+        </a>
+        <button class="botao botao--contorno botao--largo" type="button" data-adicionar>
+          <svg class="icone" aria-hidden="true"><use href="#i-carrinho"/></svg> Adicionar ao carrinho
+        </button>
+      </div>
+      <p class="lgpd">Para mandar a foto para a loja, use "Compartilhar foto" e escolha o WhatsApp, ou anexe a foto salva na conversa.</p>
+    </div>
+  </section>
+</main>
+
+<!--@carrinho-->
+<!--@scripts-->
+<script src="assets/js/parede.js"></script>
+</body>
+</html>
